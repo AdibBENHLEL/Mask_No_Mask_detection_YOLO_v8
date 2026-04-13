@@ -1,0 +1,6 @@
+data/
+venv/
+*.zip
+*.pt
+*.log
+kaggle.json

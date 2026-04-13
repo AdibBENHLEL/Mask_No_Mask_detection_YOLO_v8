@@ -1,0 +1,2 @@
+PS D:\MP1DS TP\app sup tp\projet\yolo_v8_model> .\venv\Scripts\activate
+(venv) PS D:\MP1DS TP\app sup tp\projet\yolo_v8_model> python app.py
