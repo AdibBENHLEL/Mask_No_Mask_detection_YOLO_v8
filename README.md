@@ -17,3 +17,9 @@ access control.
 - Real-time activity log with timestamps
 - Session statistics dashboard
 - mAP50: 0.93 | Precision: 0.94 | Recall: 0.91
+
+## 📦 Model Download
+
+You can download the trained model (`best.pt`) from Google Drive:
+
+👉 **[Download best.pt](https://drive.google.com/file/d/1UM3GQ1kX2Ie8LuUdocR6R2JbMmLTOMRF/view?usp=drive_link)**
