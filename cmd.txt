@@ -1,0 +1,10 @@
+docker-compose up -d --build
+docker-compose ps
+docker exec -it 
+
+
+python app.py
+npm run dev 
+
+docker tag  projectbigdata adibbh/OR_SHIELD:latest
+docker push adibbh/or_shield:latest

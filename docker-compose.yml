@@ -1,0 +1,68 @@
+
+
+services:
+  # Backend service - Flask + YOLOv8
+  backend:
+    build:
+       context: ./yolo_v8_model
+       dockerfile: Dockerfile
+    container_name: or-shield-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      # Model weights
+      - ./yolo_v8_model:/app/yolo_v8_model:ro
+      # Logs
+      - ./logs:/app/logs
+      # Configuration
+      - ./backend/.env:/app/.env:ro
+    environment:
+      FLASK_ENV: production
+      FLASK_DEBUG: 'False'
+      PYTHONUNBUFFERED: '1'
+      MODEL_PATH: /app/yolo_v8_model/best.pt
+      CAMERA_INDEX: 0
+      LOG_LEVEL: INFO
+    networks:
+      - or-shield
+    restart: unless-stopped
+    # For host camera access on Linux
+    # devices:
+    #   - /dev/video0:/dev/video0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend service - React + Vite
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: or-shield-frontend
+    ports:
+      - "3000:3000"
+      - "5173:5173"  # Vite dev server port
+    environment:
+      REACT_APP_API_URL: http://localhost:5000
+      REACT_APP_WS_URL: ws://localhost:5000/socket.io
+      NODE_ENV: production
+      VITE_API_URL: http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - or-shield
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  or-shield:
+    driver: bridge
+

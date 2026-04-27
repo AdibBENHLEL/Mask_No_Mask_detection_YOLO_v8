@@ -1,4 +1,6 @@
 flask
 flask-cors
-ultralytics
 pillow
+opencv-python-headless
+ultralytics
+gunicorn==21.2.0
