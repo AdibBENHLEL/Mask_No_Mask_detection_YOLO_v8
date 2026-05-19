@@ -4,7 +4,7 @@ A full-stack computer vision application that detects whether people
 are wearing surgical masks in real time, designed for operating room
 access control.
 
-##demo vidéo 
+## demo vidéo 
 https://drive.google.com/file/d/1ZEtoLr5TDHwof0xPpjg-GVC_yzNJ8SZf/view?usp=drivesdk
 
 
