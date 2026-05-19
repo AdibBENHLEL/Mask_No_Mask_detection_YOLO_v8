@@ -4,6 +4,10 @@ A full-stack computer vision application that detects whether people
 are wearing surgical masks in real time, designed for operating room
 access control.
 
+##demo vidéo 
+https://drive.google.com/file/d/1ZEtoLr5TDHwof0xPpjg-GVC_yzNJ8SZf/view?usp=drivesdk
+
+
 ## Tech Stack
 - **AI Model**: YOLOv8n (Ultralytics) trained on 1510 annotated images
 - **Backend**: Python Flask REST API
